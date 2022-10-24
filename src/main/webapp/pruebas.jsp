@@ -37,7 +37,7 @@
                                               +"       tb_horarios.hr_fin AS hr_fin,"
                                               +"       tb_curs.desc_curs AS desc_curs,"
                                               +"       tb_curs.inscriptos AS inscriptos "
-                                              +"FROMform tb_horarios " 
+                                              +"FROM tb_horarios " 
                                               +"    JOIN tb_curs " 
                                               +"        ON tb_horarios.id_curs= tb_curs.id_curs " 
                                               +"    JOIN tb_dias " 
