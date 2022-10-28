@@ -168,3 +168,4 @@ CREATE TABLE tb_calles (
 );
 
 INSERT INTO alus_curs (id_alus, id_curs) VALUES ((SELECT id_alus FROM tb_alus WHERE dni=123456),(SELECT id_curs FROM tb_curs WHERE nom_curs='maquillaje'));
+UPDATE tb_curs SET inscriptos=? WHERE nom_curs=?;
