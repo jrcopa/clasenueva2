@@ -105,7 +105,13 @@ SELECT id_curs, inscriptos FROM tb_curs WHERE id_curs= ?
 
 /*******************************UPDATES***************************************/
 UPDATE tb_curs SET inscriptos= ? WHERE id_curs= ?;
-/**********************************PRUEBAS************************************/
+/**********************************TABLAS EJERCICIOS CLASE*******************/
+CREATE TABLE tb_curs (id_curs int NOT NULL AUTO_INCREMENT, nom_curs varchar(20), inscriptos int(10), PRIMARY KEY (id_curs));
+CREATE TABLE tb_alus (id_alus int NOT NULL AUTO_INCREMENT, apyn varchar(20), dni int(10), estado int(2), PRIMARY KEY (id_alus));
+CREATE TABLE alus_curs (id_curs int NOT NULL, id_alus int NOT NULL, PRIMARY KEY(id_curs, id_alus), FOREIGN KEY(id_curs) REFERENCES tb_curs(id_curs), FOREIGN KEY(id_alus) REFERENCES tb_alus(id_alus));
+
+INSERT INTO tb_curs (nom_curs, inscriptos) VALUES ('programacion', 0),('maquillaje', 0),('fisica cuantica', 0),('astrofisica', 0);
+/************************************************************************************/
 SELECT nom_curs FROM tb_curs;
 
 SELECT tb_curs.nom_curs AS nom_curs, tb_dias.dia AS dia, tb_horarios.hr_inicio AS hr_inicio, tb_horarios.hr_fin AS hr_fin FROM tb_horarios JOIN tb_curs ON tb_horarios.id_curs= tb_curs.id_curs JOIN tb_dias ON tb_horarios.id_dia= tb_dias.id_dia;

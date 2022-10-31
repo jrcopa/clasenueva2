@@ -18,7 +18,7 @@
             <%
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conexion = null;            
-                String insertAlus ="INSERT INTO tb_alus (apyn, dni) VALUES (?,?)";
+                String insertAlus ="INSERT INTO tb_alus (apyn, dni, estado) VALUES (?,?,0)";
                 String insertRel = "INSERT INTO alus_curs (id_alus, id_curs) VALUES "
                         + "((SELECT id_alus FROM tb_alus WHERE dni=?),"
                         + "(SELECT id_curs FROM tb_curs WHERE nom_curs=?))";
@@ -48,9 +48,10 @@
                     conIn.setString(1, request.getParameter("cursos"));
                     ResultSet listaInsc = conIn.executeQuery();
                     listaInsc.next();
-                    out.print("Inscriptos" + listaInsc.getObject("inscriptos"));
-                    int vi = (Integer) listaInsc.getObject("inscriptos");  
+                    //out.print("Inscriptos" + listaInsc.getObject("inscriptos"));
+                    int vi = Integer.parseInt(listaInsc.getString("inscriptos"));  
                     vi = vi + 1;
+                    
                     consultaUpdate = conexion.prepareStatement(updateInsc);
                     consultaUpdate.setInt(1, vi);
                     consultaUpdate.setString(2, request.getParameter("cursos"));

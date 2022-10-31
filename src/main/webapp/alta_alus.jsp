@@ -31,8 +31,8 @@
                     consultaCursos = conexion.prepareStatement(consulta);
                     ResultSet listaCursos = consultaCursos.executeQuery();
                     while (listaCursos.next()) {
-                              
-                        out.print("<option value='"+listaCursos.getString("nom_curs")+"'> "+ listaCursos.getString("nom_curs") +" </option>");
+                        String nombreCurso = listaCursos.getString("nom_curs");       
+                        out.print("<option value='"+nombreCurso+"'> "+ nombreCurso +" </option>");
                    
                     }                   
                     listaCursos.close();
@@ -53,5 +53,11 @@
             %>
             </select> 
         </div>        
+            <select name="algo">
+                <option value="programacion">programacion</option>
+                <option value="dato2">nombre del dato 2</option>
+                <option value="dato3">nombre del dato 3</option>
+                <option value="dato4">nombre del dato 4</option>
+            </select>
     </body>
 </html>
